@@ -44,7 +44,7 @@
                     <a href="https://www.linkedin.com/in/leonel-matias-zuluaga-car%C3%BA-0b146a217/?locale=en_US"
                         target="_blank" rel="noopener noreferrer"><i class='bx bxl-linkedin'></i></a>
                 </div>
-                <a href="https://drive.google.com/uc?export=download&id=1MGWAJNYzbQfTejXkpkWnn6-toVn9W5wz"
+                <a href="https://drive.google.com/uc?export=download&id=11G1K0sJ0NBAKOOLgYH2ynpDWldaBt0mo"
                     class="btn">Download CV</a>
             </div>
             <div class="home-img">
@@ -130,13 +130,13 @@
                 </div>
 
                 <div class="portfolio-box">
-                    <img src="/img/6.png" alt="">
+                    <img src="/img/simon.jpg" alt="">
 
                     <div class="portfolio-layer">
-                        <h4>Web Design</h4>
-                        <p>Work in progress.
+                        <h4>Simon Says</h4>
+                        <p>Simon Says Mini Game
                         </p>
-                        <a href="#" id=""><i class='bx bx-link-external'></i></a>
+                        <a href="https://leozuluaga.github.io/simonSays/" id=""><i class='bx bx-link-external'></i></a>
                     </div>
                 </div>
 
@@ -192,17 +192,25 @@
         <section class="contact" id="contact">
             <h2 class="heading">Contact <span>Me</span></h2>
 
-            <form id="form" action="https://formspree.io/f/mgebnjnn" method="POST">
+            <form id="form" name="form" novalidate>
                 <div class="input-box">
-                    <input type="text" name="nombre" required type="text" id="nombre" placeholder="Full Name">
-                    <input type="email" required type="text" name="email" id="email" placeholder="Email">
+                    <div class="input-section">
+                        <span class="red" ng-if="form.nombre.$error.required && form.$submitted">Este campo es requerido</span>
+                        <input type="text" name="nombre" ng-required="true" ng-model="formData.nombre" style="width: 100%;" type="text" id="nombre" placeholder="Full Name">
+                    </div>
+                   
+                    <div class="input-section">
+                        <span class="red" ng-if="form.email.$error.email && form.$submitted">Ingrese un Mail valido</span>
+                        <span class="red" ng-if="form.email.$error.required && form.$submitted">Este campo es requerido</span>
+                        <input type="email" required type="email"  ng-model="formData.email" style="width: 100%;" name="email" id="email" placeholder="Email">
+                    </div>
                 </div>
-                <div class="input-box">
-                    <!-- <input type="number"  placeholder="Moblie Number"> -->
-                    <!-- <input type="text" placeholder="Email Subject"> -->
+                <div class="input-section" style="width: 100% !important;">
+                    <span class="red" style="top: 0px !important;" ng-if="form.mensaje.$error.required && form.$submitted">Este campo es requerido</span>
+                <textarea name="mensaje" id="mensaje" required ng-model="formData.mensaje" cols="30" rows="10" style="margin-top: 25px;" placeholder="Message"></textarea>
                 </div>
-                <textarea name="mensaje" id="mensaje" cols="30" rows="10" placeholder="Message"></textarea>
-                <button type="submit" required type="text" class="btn">Send Message</button>
+                
+                <button type="submit" ng-click="enviarForm(form)" type="text" class="btn">Send Message</button>
             </form>
         </section>
 
@@ -218,31 +226,6 @@
         </footer>
 
     </div>
-
-    <script>
-        const $form = document.querySelector("form")
-
-        $form.addEventListener("submit", handleSubmit)
-
-        async function handleSubmit(event) {
-            event.preventDefault()
-            const form = new FormData(this)
-            const response = await fetch(this.action, {
-                method: this.method,
-                body: form,
-                headers: {
-                    "Accept": "application/json"
-                }
-            })
-            if (response.ok) {
-                this.reset()
-                alert("Thank you for your message")
-            }
-        }
-
-
-
-    </script>
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://unpkg.com/typed.js@2.0.14/dist/typed.umd.js"></script>

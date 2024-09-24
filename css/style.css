@@ -33,6 +33,13 @@ body{
     
 }
 
+.input-section{
+    width: 49%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
 
 section{
     min-height: 60vh;
@@ -363,9 +370,11 @@ width: 100%;
     
 
 }
-
-.contact form .input-box input {
-        width: 49%;
+.red{
+    font-size: 13px;
+    color: red;
+    position: absolute;
+    top: -15px;
 }
 
 .contact form textarea{

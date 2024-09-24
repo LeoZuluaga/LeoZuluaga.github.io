@@ -2,12 +2,9 @@
 // ESCONDE NAVBAR 
 
 var app = angular.module('myApp', []);
-console.log(angular)
 
-// Definir un controlador
 app.controller('MainController', function ($scope) {
     $scope.message = "Hola, bienvenido a mi proyecto AngularJS!";
-    console.log($scope.message)
 
     let menuIcon = document.querySelector("#menu-icon");
     let navbar = document.querySelector(".navbar");
@@ -24,6 +21,11 @@ app.controller('MainController', function ($scope) {
 
     let sections = document.querySelectorAll("section");
     let navLinks = document.querySelectorAll("header nav a");
+
+    $scope.enviarForm = function(form){
+        if(form.$invalid) return
+       alert("Gracias Por tu Mensaje")
+    };
 
     window.onscroll = () => {
         sections.forEach(sec => {
